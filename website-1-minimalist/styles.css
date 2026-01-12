@@ -1,0 +1,506 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --bg-beige: #F5F1E8;
+    --text-black: #1a1a1a;
+    --accent: #2c2c2c;
+    --white: #ffffff;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: var(--bg-beige);
+    color: var(--text-black);
+    overflow-x: hidden;
+    line-height: 1.6;
+}
+
+/* Hero Section */
+.hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    padding: 2rem;
+    background: linear-gradient(135deg, var(--bg-beige) 0%, #e8e4db 100%);
+}
+
+.hero-content {
+    text-align: center;
+    z-index: 2;
+    max-width: 900px;
+    margin-bottom: 4rem;
+}
+
+.hero-title {
+    font-size: clamp(3rem, 8vw, 7rem);
+    font-weight: 900;
+    letter-spacing: -0.02em;
+    margin-bottom: 2rem;
+    line-height: 0.9;
+}
+
+.title-line {
+    display: block;
+    animation: fadeInUp 1s ease-out;
+}
+
+.title-line:nth-child(2) {
+    animation-delay: 0.2s;
+    opacity: 0;
+    animation-fill-mode: forwards;
+}
+
+.hero-subtitle {
+    font-size: clamp(1rem, 2vw, 1.5rem);
+    font-weight: 300;
+    letter-spacing: 0.1em;
+    margin-bottom: 3rem;
+    opacity: 0;
+    animation: fadeInUp 1s ease-out 0.4s forwards;
+}
+
+.cta-button {
+    background: var(--text-black);
+    color: var(--white);
+    border: none;
+    padding: 1.2rem 3rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    opacity: 0;
+    animation: fadeInUp 1s ease-out 0.6s forwards;
+    position: relative;
+    overflow: hidden;
+}
+
+.cta-button::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.cta-button:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+.cta-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* Product Showcase */
+.hero-visuals {
+    position: relative;
+    width: 100%;
+    max-width: 800px;
+    height: 400px;
+    margin-top: 2rem;
+}
+
+.product-showcase {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 100%;
+    gap: 4rem;
+}
+
+.product-item {
+    position: relative;
+    animation: float 6s ease-in-out infinite;
+}
+
+.product-item:nth-child(2) {
+    animation-delay: -3s;
+}
+
+/* Record Player */
+.product-frame {
+    width: 200px;
+    height: 150px;
+    background: var(--white);
+    border-radius: 4px;
+    position: relative;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease;
+}
+
+.product-frame:hover {
+    transform: scale(1.05) rotateY(5deg);
+}
+
+.product-lid {
+    width: 100%;
+    height: 8px;
+    background: rgba(0, 0, 0, 0.1);
+    position: absolute;
+    top: -8px;
+    left: 0;
+    border-radius: 4px 4px 0 0;
+    transform: rotateX(-15deg);
+    transform-origin: bottom;
+    transition: transform 0.5s ease;
+}
+
+.product-frame:hover .product-lid {
+    transform: rotateX(-25deg);
+}
+
+.product-base {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, #f8f8f8 0%, #e8e8e8 100%);
+    border-radius: 4px;
+    position: relative;
+}
+
+.product-base::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    height: 80%;
+    border: 2px solid rgba(0, 0, 0, 0.1);
+    border-radius: 50%;
+}
+
+.product-base::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 20px;
+    height: 20px;
+    background: var(--text-black);
+    border-radius: 50%;
+}
+
+/* Barcelona Chair */
+.chair-frame {
+    width: 180px;
+    height: 180px;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.5s ease;
+}
+
+.chair-frame:hover {
+    transform: rotateY(10deg);
+}
+
+.chair-seat {
+    width: 100%;
+    height: 60%;
+    background: var(--text-black);
+    border-radius: 4px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+    position: relative;
+}
+
+.chair-seat::before {
+    content: '';
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    right: 10px;
+    bottom: 10px;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    border-radius: 2px;
+}
+
+.chair-back {
+    width: 100%;
+    height: 50%;
+    background: var(--text-black);
+    border-radius: 4px;
+    position: absolute;
+    bottom: 0;
+    transform: rotateX(-10deg);
+    transform-origin: bottom;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+}
+
+.chair-back::before {
+    content: '';
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    right: 10px;
+    bottom: 10px;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    border-radius: 2px;
+}
+
+/* Scroll Indicator */
+.scroll-indicator {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: bounce 2s infinite;
+}
+
+.scroll-arrow {
+    width: 2px;
+    height: 30px;
+    background: var(--text-black);
+    position: relative;
+}
+
+.scroll-arrow::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: -4px;
+    width: 10px;
+    height: 10px;
+    border-right: 2px solid var(--text-black);
+    border-bottom: 2px solid var(--text-black);
+    transform: rotate(45deg);
+}
+
+/* Philosophy Section */
+.philosophy {
+    padding: 8rem 2rem;
+    background: var(--white);
+}
+
+.philosophy-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 3rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.philosophy-card {
+    padding: 3rem 2rem;
+    text-align: center;
+    background: var(--bg-beige);
+    border-radius: 8px;
+    transition: all 0.4s ease;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.philosophy-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.5s;
+}
+
+.philosophy-card:hover::before {
+    left: 100%;
+}
+
+.philosophy-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+.card-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    display: inline-block;
+    animation: pulse 2s ease-in-out infinite;
+}
+
+.philosophy-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+.philosophy-card p {
+    color: #666;
+    line-height: 1.8;
+}
+
+/* Gallery Section */
+.gallery {
+    padding: 8rem 2rem;
+    background: var(--bg-beige);
+}
+
+.section-title {
+    text-align: center;
+    font-size: clamp(2rem, 5vw, 4rem);
+    font-weight: 800;
+    margin-bottom: 4rem;
+    letter-spacing: -0.02em;
+}
+
+.gallery-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.gallery-item {
+    height: 300px;
+    background: var(--white);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s ease;
+}
+
+.gallery-item::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: var(--text-black);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+    z-index: 0;
+}
+
+.gallery-item:hover::after {
+    width: 500px;
+    height: 500px;
+}
+
+.gallery-content {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    transition: color 0.3s;
+}
+
+.gallery-item:hover .gallery-content {
+    color: var(--white);
+}
+
+.gallery-content h3 {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+}
+
+.gallery-content p {
+    font-size: 1.1rem;
+    opacity: 0.9;
+}
+
+/* Footer */
+.footer {
+    padding: 3rem 2rem;
+    text-align: center;
+    background: var(--text-black);
+    color: var(--white);
+    font-size: 1.2rem;
+}
+
+.name-highlight {
+    color: var(--bg-beige);
+    font-weight: 700;
+    position: relative;
+    display: inline-block;
+}
+
+.name-highlight::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--bg-beige);
+    animation: underline 1s ease-out;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateX(-50%) translateY(0);
+    }
+    50% {
+        transform: translateX(-50%) translateY(10px);
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+}
+
+@keyframes underline {
+    from {
+        width: 0;
+    }
+    to {
+        width: 100%;
+    }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .product-showcase {
+        flex-direction: column;
+        gap: 2rem;
+    }
+    
+    .hero-visuals {
+        height: auto;
+    }
+}

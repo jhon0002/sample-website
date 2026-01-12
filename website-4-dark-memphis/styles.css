@@ -1,0 +1,526 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --dark-grey: #1a1a1a;
+    --black: #000000;
+    --white: #FFFFFF;
+    --red: #FF0000;
+    --purple: #8B00FF;
+    --yellow: #FFD700;
+    --teal: #00CED1;
+    --orange: #FF8C00;
+}
+
+body {
+    font-family: 'Arial Black', 'Arial', sans-serif;
+    background: var(--black);
+    color: var(--white);
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* Background Gradient */
+.background-gradient {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, var(--dark-grey) 0%, var(--black) 100%);
+    z-index: 0;
+}
+
+/* Background Shapes */
+.background-shapes {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.bg-shape {
+    position: absolute;
+}
+
+.bg-shape-left {
+    width: 300px;
+    height: 400px;
+    top: 10%;
+    left: 5%;
+    background: var(--black);
+    clip-path: polygon(0 0, 100% 0, 60% 100%, 0 100%);
+    border-right: 4px solid var(--red);
+    animation: float 8s ease-in-out infinite;
+}
+
+.bg-shape-right {
+    width: 250px;
+    height: 350px;
+    bottom: 15%;
+    right: 8%;
+    background: var(--red);
+    clip-path: polygon(40% 0, 100% 0, 100% 100%, 0 100%);
+    border-left: 4px solid var(--black);
+    animation: float 10s ease-in-out infinite 2s;
+}
+
+/* Hero Section */
+.hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 4rem 2rem;
+    position: relative;
+    z-index: 2;
+}
+
+.hero-title {
+    font-size: clamp(3rem, 8vw, 7rem);
+    font-weight: 900;
+    text-align: center;
+    margin-bottom: 4rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    animation: fadeInDown 1s ease-out;
+    text-shadow: 0 0 30px rgba(255, 255, 255, 0.3);
+}
+
+/* Centerpiece */
+.hero-centerpiece {
+    position: relative;
+    width: 100%;
+    max-width: 600px;
+    height: 600px;
+    margin: 4rem 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Pedestal */
+.pedestal {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+}
+
+.pedestal-base {
+    width: 200px;
+    height: 30px;
+    background: var(--white);
+    border-radius: 4px;
+    box-shadow: 0 0 40px rgba(255, 255, 255, 0.3);
+}
+
+.pedestal-top {
+    width: 180px;
+    height: 20px;
+    background: var(--white);
+    border-radius: 2px;
+    margin: 0 auto;
+    position: relative;
+    top: -10px;
+    box-shadow: 0 0 30px rgba(255, 255, 255, 0.2);
+}
+
+/* Memphis Bowl */
+.memphis-bowl {
+    position: absolute;
+    bottom: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 250px;
+    height: 300px;
+    z-index: 2;
+    animation: float 4s ease-in-out infinite;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.memphis-bowl:hover {
+    transform: translateX(-50%) scale(1.1) rotateY(10deg);
+}
+
+.bowl-top {
+    width: 200px;
+    height: 80px;
+    background: linear-gradient(135deg, var(--purple) 0%, var(--teal) 50%, var(--yellow) 100%);
+    border: 4px solid var(--black);
+    border-radius: 100px 100px 0 0;
+    margin: 0 auto;
+    position: relative;
+    z-index: 3;
+}
+
+.bowl-base {
+    width: 100%;
+    height: 60px;
+    background: var(--orange);
+    border: 4px solid var(--black);
+    margin: 0 auto;
+    position: relative;
+}
+
+.bowl-base-1 {
+    width: 180px;
+    top: -4px;
+    z-index: 2;
+}
+
+.bowl-base-2 {
+    width: 160px;
+    top: -68px;
+    background: var(--teal);
+    z-index: 1;
+}
+
+.bowl-base-3 {
+    width: 140px;
+    top: -132px;
+    background: var(--yellow);
+    z-index: 0;
+}
+
+.bowl-pattern {
+    position: absolute;
+    border: 3px solid var(--black);
+    z-index: 4;
+}
+
+.pattern-1 {
+    width: 40px;
+    height: 40px;
+    background: var(--red);
+    top: 20px;
+    left: 30px;
+    transform: rotate(45deg);
+}
+
+.pattern-2 {
+    width: 30px;
+    height: 30px;
+    background: var(--purple);
+    top: 40px;
+    right: 40px;
+    border-radius: 50%;
+}
+
+.pattern-3 {
+    width: 50px;
+    height: 20px;
+    background: var(--teal);
+    bottom: 100px;
+    left: 50%;
+    transform: translateX(-50%) rotate(-20deg);
+}
+
+/* Spotlights */
+.spotlight {
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.3) 0%, transparent 70%);
+    top: 10%;
+    animation: spotlightMove 6s ease-in-out infinite;
+    pointer-events: none;
+}
+
+.spotlight-1 {
+    left: 20%;
+    animation-delay: 0s;
+}
+
+.spotlight-2 {
+    right: 20%;
+    animation-delay: 3s;
+}
+
+.hero-quote {
+    max-width: 800px;
+    text-align: center;
+    font-size: clamp(1rem, 2vw, 1.4rem);
+    line-height: 1.8;
+    margin-top: 4rem;
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    animation: fadeInUp 1s ease-out 0.5s both;
+}
+
+/* Reactions Section */
+.reactions {
+    padding: 8rem 2rem;
+    position: relative;
+    z-index: 2;
+    background: var(--dark-grey);
+}
+
+.section-title {
+    text-align: center;
+    font-size: clamp(2.5rem, 6vw, 5rem);
+    font-weight: 900;
+    margin-bottom: 4rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+.reaction-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 3rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.reaction-card {
+    padding: 3rem 2rem;
+    background: var(--black);
+    border: 3px solid var(--white);
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.reaction-card::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: var(--red);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+    z-index: 0;
+}
+
+.reaction-card:hover::before {
+    width: 500px;
+    height: 500px;
+}
+
+.reaction-card[data-reaction="love"]:hover {
+    border-color: var(--red);
+}
+
+.reaction-card[data-reaction="hate"]:hover {
+    border-color: var(--orange);
+}
+
+.reaction-card[data-reaction="feel"]:hover {
+    border-color: var(--yellow);
+}
+
+.reaction-icon {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    position: relative;
+    z-index: 1;
+    display: inline-block;
+    animation: pulse 2s ease-in-out infinite;
+}
+
+.reaction-card h3 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    position: relative;
+    z-index: 1;
+    font-weight: 900;
+}
+
+.reaction-card p {
+    position: relative;
+    z-index: 1;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    opacity: 0.9;
+}
+
+/* Philosophy Section */
+.philosophy {
+    padding: 8rem 2rem;
+    position: relative;
+    z-index: 2;
+    background: var(--black);
+}
+
+.philosophy-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    align-items: center;
+}
+
+.philosophy-text {
+    padding: 2rem;
+}
+
+.philosophy-text h3 {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    font-weight: 900;
+    text-transform: uppercase;
+}
+
+.philosophy-text p {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    opacity: 0.9;
+}
+
+.philosophy-visual {
+    height: 400px;
+    position: relative;
+}
+
+.visual-element {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, var(--purple), var(--teal), var(--yellow));
+    border: 4px solid var(--white);
+    border-radius: 20px;
+    animation: gradientShift 5s ease infinite;
+    position: relative;
+    overflow: hidden;
+}
+
+.visual-element::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: repeating-linear-gradient(
+        45deg,
+        transparent,
+        transparent 20px,
+        var(--black) 20px,
+        var(--black) 40px
+    );
+    opacity: 0.3;
+}
+
+/* Footer */
+.footer {
+    padding: 4rem 2rem;
+    text-align: center;
+    background: var(--black);
+    color: var(--white);
+    font-size: 1.5rem;
+    font-weight: 900;
+    position: relative;
+    z-index: 2;
+    border-top: 2px solid var(--white);
+}
+
+.name-highlight {
+    color: var(--yellow);
+    position: relative;
+    display: inline-block;
+    animation: glow 2s ease-in-out infinite;
+}
+
+/* Animations */
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+@keyframes spotlightMove {
+    0%, 100% {
+        transform: translate(0, 0);
+        opacity: 0.5;
+    }
+    50% {
+        transform: translate(50px, 30px);
+        opacity: 0.8;
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.2);
+    }
+}
+
+@keyframes glow {
+    0%, 100% {
+        text-shadow: 0 0 10px var(--yellow), 0 0 20px var(--yellow);
+    }
+    50% {
+        text-shadow: 0 0 20px var(--yellow), 0 0 30px var(--yellow), 0 0 40px var(--yellow);
+    }
+}
+
+@keyframes gradientShift {
+    0%, 100% {
+        background: linear-gradient(135deg, var(--purple), var(--teal), var(--yellow));
+    }
+    50% {
+        background: linear-gradient(135deg, var(--yellow), var(--orange), var(--red));
+    }
+}
+
+/* Responsive */
+@media (max-width: 968px) {
+    .philosophy-content {
+        grid-template-columns: 1fr;
+    }
+    
+    .hero-centerpiece {
+        height: 500px;
+    }
+    
+    .memphis-bowl {
+        width: 200px;
+        height: 250px;
+    }
+}

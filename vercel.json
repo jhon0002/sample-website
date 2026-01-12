@@ -1,0 +1,47 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "website-1-minimalist/**",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "website-2-memphis-maximalist/**",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "website-3-memphis-riot/**",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "website-4-dark-memphis/**",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "website-5-modern-creative/**",
+      "use": "@vercel/static"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/website-1",
+      "dest": "/website-1-minimalist/index.html"
+    },
+    {
+      "src": "/website-2",
+      "dest": "/website-2-memphis-maximalist/index.html"
+    },
+    {
+      "src": "/website-3",
+      "dest": "/website-3-memphis-riot/index.html"
+    },
+    {
+      "src": "/website-4",
+      "dest": "/website-4-dark-memphis/index.html"
+    },
+    {
+      "src": "/website-5",
+      "dest": "/website-5-modern-creative/index.html"
+    }
+  ]
+}

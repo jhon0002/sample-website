@@ -1,0 +1,446 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --yellow: #FFE500;
+    --black: #000000;
+    --red: #FF0000;
+    --blue: #0066FF;
+    --green: #00FF99;
+    --wood: #D4A574;
+    --white: #FFFFFF;
+    --grey: #E5E5E5;
+}
+
+body {
+    font-family: 'Arial Black', 'Arial', sans-serif;
+    background: var(--yellow);
+    color: var(--black);
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* Background */
+.background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.bg-shape {
+    position: absolute;
+    background: var(--black);
+}
+
+.bg-shape-1 {
+    width: 300px;
+    height: 200px;
+    top: 10%;
+    right: 5%;
+    clip-path: polygon(0 0, 100% 0, 100% 70%, 0 100%);
+    animation: float 6s ease-in-out infinite;
+}
+
+.bg-shape-2 {
+    width: 250px;
+    height: 150px;
+    top: 50%;
+    right: 15%;
+    clip-path: polygon(30% 0, 100% 0, 100% 100%, 0 100%);
+    animation: float 8s ease-in-out infinite 2s;
+}
+
+.bg-shape-3 {
+    width: 200px;
+    height: 300px;
+    bottom: 10%;
+    left: 10%;
+    clip-path: polygon(0 0, 100% 20%, 100% 100%, 0 80%);
+    animation: float 7s ease-in-out infinite 1s;
+}
+
+/* Hero Section */
+.hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 4rem;
+    padding: 4rem 2rem;
+    position: relative;
+    z-index: 1;
+    align-items: center;
+}
+
+.hero-text {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.vertical-text {
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    font-size: clamp(2rem, 6vw, 5rem);
+    font-weight: 900;
+    line-height: 1.2;
+    letter-spacing: 0.1em;
+    animation: slideInLeft 1s ease-out;
+}
+
+.hero-furniture {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.furniture-piece {
+    width: 400px;
+    height: 500px;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.6s ease;
+    animation: float 4s ease-in-out infinite;
+}
+
+.furniture-piece:hover {
+    transform: rotateY(10deg) rotateX(5deg);
+}
+
+/* Furniture Components */
+.shelf {
+    position: absolute;
+    background: var(--wood);
+    border: 3px solid var(--black);
+    transition: all 0.3s ease;
+}
+
+.shelf-1 {
+    width: 200px;
+    height: 30px;
+    top: 50px;
+    left: 100px;
+    background: var(--blue);
+    transform: rotate(-5deg);
+}
+
+.shelf-2 {
+    width: 180px;
+    height: 30px;
+    top: 150px;
+    left: 110px;
+    background: var(--green);
+    transform: rotate(3deg);
+}
+
+.shelf-3 {
+    width: 220px;
+    height: 30px;
+    top: 250px;
+    left: 90px;
+    background: var(--wood);
+    transform: rotate(-2deg);
+}
+
+.drawer {
+    position: absolute;
+    width: 80px;
+    height: 60px;
+    background: var(--red);
+    border: 3px solid var(--black);
+    bottom: 100px;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    overflow: hidden;
+}
+
+.drawer::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 20px;
+    height: 20px;
+    background: var(--black);
+    border-radius: 50%;
+}
+
+.drawer-1 {
+    left: 120px;
+}
+
+.drawer-2 {
+    left: 220px;
+}
+
+.drawer:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.drawer.open {
+    transform: translateY(-60px);
+}
+
+.support {
+    position: absolute;
+    width: 20px;
+    height: 100px;
+    background: var(--black);
+    bottom: 160px;
+}
+
+.support-1 {
+    left: 100px;
+    transform: rotate(-10deg);
+}
+
+.support-2 {
+    right: 100px;
+    transform: rotate(10deg);
+}
+
+.hero-quote {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 2rem;
+    background: var(--white);
+    border: 4px solid var(--black);
+    max-width: 800px;
+    margin: 0 auto;
+    font-size: clamp(1rem, 2vw, 1.3rem);
+    line-height: 1.8;
+    animation: fadeInUp 1s ease-out 0.5s both;
+}
+
+/* Philosophy Section */
+.philosophy {
+    padding: 8rem 2rem;
+    background: var(--white);
+    position: relative;
+    z-index: 1;
+}
+
+.section-title {
+    text-align: center;
+    font-size: clamp(3rem, 8vw, 6rem);
+    font-weight: 900;
+    margin-bottom: 4rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+.philosophy-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 3rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.philosophy-item {
+    padding: 3rem 2rem;
+    background: var(--yellow);
+    border: 5px solid var(--black);
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.philosophy-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: var(--red);
+    transition: left 0.4s;
+    z-index: 0;
+}
+
+.philosophy-item:hover::before {
+    left: 0;
+}
+
+.philosophy-item:hover {
+    transform: rotate(5deg) scale(1.05);
+    border-color: var(--red);
+}
+
+.philosophy-icon {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    position: relative;
+    z-index: 1;
+    display: inline-block;
+    animation: bounce 2s ease-in-out infinite;
+}
+
+.philosophy-item h3 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    position: relative;
+    z-index: 1;
+    font-weight: 900;
+}
+
+.philosophy-item p {
+    position: relative;
+    z-index: 1;
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+/* Interactive Section */
+.interactive {
+    padding: 8rem 2rem;
+    background: var(--yellow);
+    position: relative;
+    z-index: 1;
+}
+
+.interactive-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.interactive-item {
+    height: 250px;
+    background: var(--white);
+    border: 5px solid var(--black);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.interactive-item[data-action="rotate"]:hover {
+    transform: rotate(15deg);
+}
+
+.interactive-item[data-action="scale"]:hover {
+    transform: scale(1.2);
+}
+
+.interactive-item[data-action="color"] {
+    background: var(--blue);
+}
+
+.interactive-item[data-action="color"]:hover {
+    background: var(--green);
+}
+
+.interactive-item h3 {
+    font-size: 2rem;
+    font-weight: 900;
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+}
+
+.interactive-item p {
+    font-size: 1.1rem;
+}
+
+/* Footer */
+.footer {
+    padding: 4rem 2rem;
+    text-align: center;
+    background: var(--black);
+    color: var(--white);
+    font-size: 1.5rem;
+    font-weight: 900;
+    position: relative;
+    z-index: 1;
+}
+
+.name-highlight {
+    color: var(--yellow);
+    position: relative;
+    display: inline-block;
+    animation: glow 2s ease-in-out infinite;
+}
+
+/* Animations */
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+@keyframes glow {
+    0%, 100% {
+        text-shadow: 0 0 10px var(--yellow), 0 0 20px var(--yellow);
+    }
+    50% {
+        text-shadow: 0 0 20px var(--yellow), 0 0 30px var(--yellow), 0 0 40px var(--yellow);
+    }
+}
+
+/* Responsive */
+@media (max-width: 968px) {
+    .hero {
+        grid-template-columns: 1fr;
+    }
+    
+    .vertical-text {
+        writing-mode: horizontal-tb;
+        text-orientation: initial;
+    }
+    
+    .furniture-piece {
+        width: 300px;
+        height: 400px;
+    }
+}
